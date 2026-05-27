@@ -1,16 +1,18 @@
+# Manual publish to npm without creating a GitHub Release (e.g. re-publish, hotfix)
 name: Publish to npm
 
 on:
   workflow_dispatch:
 
-permissions:
-  contents: read
-  id-token: write
-
 jobs:
   publish:
     name: Publish
+    if: github.repository == 'grMLEqomlkkU5Eeinz4brIrOVCUCkJuN/hantaviruswrapper'
     runs-on: ubuntu-latest
+    environment: npm
+    permissions:
+      contents: read
+      id-token: write
 
     steps:
       - uses: actions/checkout@v6
@@ -23,8 +25,8 @@ jobs:
 
       - run: npm ci
 
+      - run: npm test
+
       - run: npm run build
 
       - run: npm publish --provenance --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISHKEY }}
