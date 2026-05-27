@@ -1,0 +1,72 @@
+{
+	"name": "hantaviruswrapper",
+	"version": "1.0.0",
+	"description": "",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"default": "./dist/index.js"
+		}
+	},
+	"scripts": {
+		"build": "tsc",
+		"prepublishOnly": "npm run build",
+		"test": "NODE_OPTIONS='--experimental-vm-modules' jest --runInBand"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/grMLEqomlkkU5Eeinz4brIrOVCUCkJuN/hantaviruswrapper"
+	},
+	"type": "module",
+	"devDependencies": {
+		"@tsconfig/node22": "^22.0.5",
+		"@types/jest": "^30.0.0",
+		"@types/node": "^25.6.0",
+		"@types/supertest": "^7.2.0",
+		"eslint": "^10.2.1",
+		"jest": "^30.2.0",
+		"nodemon": "^3.1.11",
+		"ts-jest": "^29.4.6",
+		"tsx": "^4.21.0",
+		"typescript": "^6.0.3",
+		"typescript-eslint": "^8.51.0"
+	},
+	"jest": {
+		"preset": "ts-jest/presets/default-esm",
+		"testEnvironment": "node",
+		"roots": [
+			"<rootDir>/tests"
+		],
+		"testMatch": [
+			"**/*.test.ts"
+		],
+		"collectCoverageFrom": [
+			"lib/**/*.{ts,js}",
+			"!lib/**/*.d.ts"
+		],
+		"transform": {
+			"^.+\\.ts$": [
+				"ts-jest",
+				{
+					"useESM": true
+				}
+			]
+		},
+		"moduleNameMapper": {
+			"^(\\.{1,2}/.*)\\.js$": "$1"
+		},
+		"moduleFileExtensions": [
+			"ts",
+			"js",
+			"json",
+			"node"
+		],
+		"extensionsToTreatAsEsm": [
+			".ts"
+		]
+	}
+}
